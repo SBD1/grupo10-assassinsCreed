@@ -18,7 +18,7 @@ Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, n
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/78550466?v=4" width="100px;" alt="Foto do Ricardo"/><br>
         <sub>
-          <b>Arthur Thales</b>
+          <b>Arthur Talles</b>
         </sub>
       </a>
     </td>
