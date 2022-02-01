@@ -1,6 +1,12 @@
 # grupo10-assassinsCreed
 Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, na disciplina Sistema de Banco de Dados 1 com o professor Maurício Serrano da FGA - UnB.
+
+<div align="center">
+  <img alt="size-badge" src="https://user-images.githubusercontent.com/51385738/151895519-bbb4b847-09f4-4f7b-95a6-7f87519bf4c2.png"/>
+</div>
+
 ## Colaboradores
+
 
 
 <table>
