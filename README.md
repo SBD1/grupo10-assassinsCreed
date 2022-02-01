@@ -2,13 +2,6 @@
 Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, na disciplina Sistema de Banco de Dados 1 com o professor Maurício Serrano da FGA - UnB.
 ## Colaboradores
 
-<!-- 
-Arquiteto: rosa #FF00FF
-PO: azul #
-SM: marrom #
-Devops: verde-escuro #
-Desenvolvedor: amarelo #
--->
 
 <table>
   
