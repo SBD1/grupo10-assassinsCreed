@@ -146,25 +146,10 @@
  
   * 1a. FN : Ok
   * 2a. FN : Ok 
-  * 3a. FN : O atributo comum "alcance" liga-se ao atributo "dano", que depende funcionalmente da superchave mínima "id". Portanto, "alcance" depende transitivamente de tal superchave.
-    <p></p> 
-    id -> alcance
-    <p></p> 
-    <p></p> 
-  
-     |   <u>id</u>  (primária)  |  descrição |    valor  |  dano | local(sigla)|
-     | :---: | :---: | :---: | :---: | :---: |  
-     | -  | -  |  -  |  -  | - |
-    <p></p> 
-    <p></p> 
-  
-    |   <u>dano</u> (primária)   |  alcance  |  
-    |     :---:      | :---: |  
-    | -  | -  |  -  |  -  |
-
+  * 3a. FN : Ok
   * FNBC : Ok 
   * 4a. FN : Ok
-  <a href="Revisado parcialmente. "></a>
+  <a href="Revisado"></a>
 <p></p> 
 
 * **Arco = {<u>id</u> (primária), descrição, valor, dano, qtdflechas, local (sigla)}**
