@@ -152,13 +152,13 @@
     <p></p> 
     <p></p> 
   
-     |   <u>id</u>   |  descrição |    valor  |  dano | local(sigla)|
+     |   <u>id</u>  (primária)  |  descrição |    valor  |  dano | local(sigla)|
      | :---: | :---: | :---: | :---: | :---: |  
      | -  | -  |  -  |  -  | - |
     <p></p> 
     <p></p> 
   
-    |   <u>dano</u>   |  alcance  |  
+    |   <u>dano</u> (primária)   |  alcance  |  
     |     :---:      | :---: |  
     | -  | -  |  -  |  -  |
 
