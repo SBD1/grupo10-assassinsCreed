@@ -1,4 +1,6 @@
-## Parte complexa de mais – Itens
+Alterações realizadas de acordo com os pontos levantados pelo professor no áudio.
+
+## Parte muito complexa – Itens
 •	Remédios, porção de força
 
 •	Não faz sentido ter uma tabela para uma única tupla
@@ -94,9 +96,20 @@
 
 ## Todo quadrado tem que ter um item ou então (0 ou 1) itens
 
+## Imagem do jogo - ARMADURAS
+![image](https://user-images.githubusercontent.com/51385738/158241949-5ae34bab-a8da-4f69-8f47-0d6b776874e2.png)
+
+## Imagem do jogo - ITENS
+![image](https://user-images.githubusercontent.com/51385738/158242345-cb61efdc-c932-4e41-ab6c-fe888a06b8a4.png)
 
 
+## Imagem do jogo - CATEGORIAS PERSONAGEM
+![image](https://user-images.githubusercontent.com/51385738/158242208-941d517c-3b2e-4e3d-b63b-4b951fdbbeeb.png)
+
+## Imagem do jogo - EVOLUÇÃO DO PERSONAGEM
+![image](https://user-images.githubusercontent.com/51385738/158242565-c7b55de9-83a7-42a2-be94-8ac07d73b8ac.png)
 
 
+# Versão Final - Alterações
 
-
+![MER - AC-Page-3 drawio](https://user-images.githubusercontent.com/51385738/158240805-6ed14383-598a-41ea-a855-a73e1c112400.png)
