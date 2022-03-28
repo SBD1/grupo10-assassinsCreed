@@ -468,3 +468,35 @@ ALTER TABLE ONLY public."ItemSeLocalizaEmQuadrado"
 -- TOC entry 2818 (class 2606 OID 24705)
 -- Name: MercadoPossuiItem MercadoPossuiItem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
+
+ALTER TABLE ONLY public."MercadoPossuiItem"
+    ADD CONSTRAINT "MercadoPossuiItem_pkey" PRIMARY KEY ("IdMercado");
+
+
+--
+-- Name: Mercado Mercado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Mercado"
+    ADD CONSTRAINT "Mercado_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- Name: TipoDePersonagem TipoDePersonagem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."TipoDePersonagem"
+    ADD CONSTRAINT "TipoDePersonagem_pkey" PRIMARY KEY ("idPersonagem");
+
+
+--
+-- Name: missao missao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.missao
+    ADD CONSTRAINT missao_pkey PRIMARY KEY ("Nome");
+
+
+--
+-- Name: recompensa recompensa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
