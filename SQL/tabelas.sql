@@ -8,10 +8,6 @@ CREATE TABLE public."Area" (
 
 ALTER TABLE public."Area" OWNER TO postgres;
 
---
--- TOC entry 201 (class 1259 OID 24646)
--- Name: Quadrado; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE public."Quadrado" (
 )
@@ -20,10 +16,6 @@ INHERITS (public."Area");
 
 ALTER TABLE public."Quadrado" OWNER TO postgres;
 
---
--- TOC entry 197 (class 1259 OID 24623)
--- Name: TipoDePersonagem; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE public."TipoDePersonagem" (
     "idPersonagem" bigint NOT NULL,
@@ -500,3 +492,6 @@ ALTER TABLE ONLY public.missao
 --
 -- Name: recompensa recompensa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
+
+ALTER TABLE ONLY public.recompensa
+    ADD CONSTRAINT recompensa_pkey PRIMARY KEY (recompensa);
