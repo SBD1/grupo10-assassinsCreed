@@ -6,8 +6,8 @@ CREATE DOMAIN nome AS VARCHAR(30) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS tbl_area (
     nome nome NOT NULL,
-    coordenada_x integer NOT NULL,
-    coordenada_y integer NOT NULL,
+    tamanho_x integer NOT NULL,
+    tamanho_y integer NOT NULL,
     descricao varchar(50) NOT NULL,
     bioma varchar(10) NOT NULL,
     clima varchar(10) NOT NULL,
@@ -69,7 +69,6 @@ CREATE TABLE tbl_aliado (
     velocidade integer NOT NULL,
     vida integer NOT NULL,
     ataque integer NOT NULL,
-    idHeroi ID NOT NULL,
     coordenada_x integer NOT NULL,
     coordenada_y integer NOT NULL,
     area varchar(20) NOT NULL,
@@ -187,7 +186,7 @@ CREATE TABLE tbl_arma(
     idArma id NOT NULL,
     descricao varchar(50) NOT NULL,
     valor interger NOT NULL,
-    efeito varchar(20) NOT NULL,
+    dano varchar(20) NOT NULL,
     categoria varchar(20) NOT NULL,
     local char(2),
     CONSTRAINT chavesPrimariasArma PRIMARY KEY(idArma)
@@ -197,7 +196,7 @@ CREATE TABLE tbl_armadura(
     idArmadura id NOT NULL,
     descricao varchar(50) NOT NULL,
     valor interger NOT NULL,
-    efeito varchar(20) NOT NULL,
+    defesa varchar(20) NOT NULL,
     categoria varchar(20) NOT NULL,
     local char(2),
     CONSTRAINT chavesPrimariasArmadura PRIMARY KEY(idArmadura)
@@ -238,14 +237,6 @@ CREATE TABLE tbl_mercado(
     CONSTRAINT idDoMercado PRIMARY KEY(idMercado),
     FOREIGN KEY (area) REFERENCES tbl_area (nome),
     FOREIGN KEY (coordenada_x, coordeenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y, area)
-);
-
-CREATE TABLE tbl_MercadoPossuiItem(
-    idMercado id NOT NULL,
-    idInstancia id NOT NULL,
-    CONSTRAINT idDoMercadoPossuiItem PRIMARY KEY(idMercado, idInstancia),
-    FOREIGN KEY (idMercado) REFERENCES tbl_Mercado (idMercado),
-    FOREIGN KEY (idInstancia) REFERENCES tbl_InstanciaDeItem (idInstanciaItem)
 );
 
 CREATE TABLE tbl_mercado_possui_item(
