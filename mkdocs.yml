@@ -1,1 +1,21 @@
-site_name: My Docs
+site_name: grupo10-assassinsCreed
+
+repo_name: "grupo10-assassinsCre"
+repo_url: "https://github.com/SBD1/grupo10-assassinsCreed"
+
+extra_css:
+  - extra.css
+
+theme:
+  name: material
+  language: "pt"
+  logo: logo/logo.png
+  palette:
+    primary: "#fff"
+    accent: "light blue"
+  font:
+    text: "Montserrat"
+    code: "sans-serif"
+
+nav:
+  - Início: index.md
