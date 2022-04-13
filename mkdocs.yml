@@ -19,3 +19,12 @@ theme:
 
 nav:
   - Início: index.md
+  - MER: MER/MER.md
+  - Modelo Relacional: Modelo Relacional/Modelo Relacional.md
+  - Normalização: Normalização/Normalização.md
+  - SQL:
+    - DDL: SQL/DDL/DDL.md
+    - DML: SQL/DML/DML.md
+  - Game: Game/Game.md
+
+

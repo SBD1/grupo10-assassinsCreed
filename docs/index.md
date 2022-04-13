@@ -1,4 +1,4 @@
-# grupo10-assassinsCreed
+# Grupo 10 - Assassin's Creed
 Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, na disciplina Sistema de Banco de Dados 1 com o professor Maurício Serrano da FGA - UnB.
 
 <div align="center">
