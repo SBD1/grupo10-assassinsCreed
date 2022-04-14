@@ -58,7 +58,7 @@ CREATE TABLE tbl_utilitario(
     valor INTEGER,
     efeito VARCHAR(20),
     categoria VARCHAR(20),
-    local CHAR(2),
+    localidade CHAR(2),
     CONSTRAINT chavesPrimariasUtilitario PRIMARY KEY(idUtilitario)
 );
 
@@ -66,9 +66,9 @@ CREATE TABLE tbl_arma(
     idArma ID NOT NULL,
     descricao VARCHAR(50),
     valor INTEGER,
-    dano VARCHAR(20),
+    dano INTEGER,
     categoria VARCHAR(20),
-    local CHAR(2),
+    localidade CHAR(2),
     CONSTRAINT chavesPrimariasArma PRIMARY KEY(idArma)
 );
 
@@ -76,9 +76,8 @@ CREATE TABLE tbl_armadura(
     idArmadura ID NOT NULL,
     descricao VARCHAR(50),
     valor INTEGER,
-    defesa VARCHAR(20),
-    categoria VARCHAR(20),
-    local CHAR(2),
+    defesa INTEGER,
+    localidade CHAR(2),
     CONSTRAINT chavesPrimariasArmadura PRIMARY KEY(idArmadura)
 );
 
@@ -111,7 +110,7 @@ CREATE TABLE tbl_instancia_item(
     FOREIGN KEY (id_item) REFERENCES tbl_tipo_item (id_item)
 );
 
-CREATE TABLE tbl_item_localiza_quadrado(
+CREATE TABLE tbl_quadrado_localiza_item(
     id_instancia ID NOT NULL,
     coordenada_x INTEGER,
     coordenada_y INTEGER,
