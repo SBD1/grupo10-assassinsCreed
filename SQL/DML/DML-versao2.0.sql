@@ -8,7 +8,7 @@ INSERT INTO tbl_inimigo (id, nomeCompleto, tamanho, raca, velocidade, vida, ataq
 (4, 'Vinicius Silva', 3, 'Warrior', 2, 100, 15, 2, 1, 'Castelo'),
 (5, 'Wesley Santos', 2, 'Warrior', 3, 80, 12, 2, 2, 'Castelo');
 
-INSERTO INTO tbl_aliado(id, nomeCompleto, tamanho, velocidade, vida, ataque, coordenada_x, coordenada_y, area) VALUES
+INSERT INTO tbl_aliado(id, nomeCompleto, tamanho, velocidade, vida, ataque, coordenada_x, coordenada_y, area) VALUES
 (6, 'Mauricio', 3, 3, 100, 15, 3, 1, 'Castelo'),
 (7, 'Maria', 1, 4, 90, 15, 3, 2, 'Vila');
 
