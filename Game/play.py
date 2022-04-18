@@ -2,6 +2,7 @@ import pygame, sys
 from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
 from pathfinding.core.diagonal_movement import DiagonalMovement
+from config.conexao import Conexao
 
 class Pathfinder:
 	def __init__(self,matriz):
@@ -123,6 +124,8 @@ class Roomba(pygame.sprite.Sprite):
 		self.pos += self.direction * self.velocidade
 		self.check_collisions()
 		self.rect.center = self.pos
+		# Testando conexao com bd
+		# reg = Conexao.consultar_db('select * from public.tbl_armadura')
 
 # base inicial
 pygame.init()

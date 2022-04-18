@@ -26,12 +26,12 @@ O projeto tem como objetivo a implementação do algoritmo Dijkstra. Criamos um 
 
  * Clonar o repositório
   ```
-  https://github.com/projeto-de-algoritmos/grafos2_Game.git
+  https://github.com/
   ```
   
   * Mudar para a pasta do repositório
   ```
-  cd Grafos2_game/Grafos2
+  cd Game/
   ```
   
  * Executar o projeto
