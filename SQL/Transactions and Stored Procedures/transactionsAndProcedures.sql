@@ -1,3 +1,27 @@
+CREATE PROCEDURE insert_quadrado(quadrado_id integer, coordenada_x integer, coordenada_y integer, area TEXT, terreno integer)
+LANGUAGE SQL
+BEGIN ATOMIC
+    INSERT INTO tbl_quadrado VALUES (quadrado_id, coordenada_x, coordenada_y, area, terreno);
+END;
+
+CREATE PROCEDURE insert_area(nome TEXT, tamanho_x integer, tamanho_y integer, descricao TEXT, bioma TEXT, clima TEXT)
+LANGUAGE SQL
+BEGIN ATOMIC
+    INSERT INTO tbl_area VALUES (nome, tamanho_x, tamanho_y, descricao, bioma, clima);
+END;
+
+CREATE PROCEDURE insert_recompesas(missao TEXT, recompensa TEXT, idheroi integer)
+LANGUAGE SQL
+BEGIN ATOMIC
+    INSERT INTO tbl_recompensas VALUES (missao, recompensa, idheroi);
+END;
+
+CREATE PROCEDURE insert_kill(idhorei integer, idinstanciainimigo integer, vecender integer)
+LANGUAGE SQL
+BEGIN ATOMIC
+    INSERT INTO tbl_kill VALUES (idhorei, idinstanciainimigo, vecender);
+END;
+
 CREATE OR REPLACE FUNCTION inserir_area() RETURNS trigger AS $inserir_area$
 BEGIN
     PERFORM * FROM tbl_area WHERE nome = new.nome;
@@ -27,6 +51,23 @@ BEGIN
     RETURN NEW;
 END;
 $inserir_quadrado_localiza_item$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION inserir_item_no_mercado() RETURNS trigger AS $inserir_item_no_mercado$
+BEGIN
+    PERFORM * FROM tbl_mercado_possui_item WHERE id_instancia = new.id_instancia AND id_mercado = new.id_mercado;
+    IF FOUND THEN
+        RAISE EXCEPTION 'Este item já está neste mercado';
+    END IF;
+    RETURN NEW;
+END;
+$inserir_item_no_mercado$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION deletar_item_no_mercado() RETURNS trigger AS $deletar_mercado_possui_item$
+BEGIN
+    DELETE FROM tbl_mercado_possui_item WHERE id_instancia = old.id_instancia AND id_mercado = old.id_mercado;
+    RETURN NULL;
+END;
+$deletar_mercado_possui_item$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION inserir_heroi() RETURNS trigger AS $inserir_heroi$
 BEGIN
@@ -107,3 +148,32 @@ BEGIN
     RETURN NEW;
 END;
 $inserir_vantagens$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION deletar_aliado() RETURNS trigger AS $deletar_aliado$
+BEGIN
+    DELETE FROM tbl_instancia_aliado WHERE idInstanciaAliado = old.idInstanciaAliado;
+    RETURN NULL;
+END;
+$deletar_aliado$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION deletar_inimigo() RETURNS trigger AS $deletar_inimigo$
+BEGIN
+    DELETE FROM tbl_instancia_inimigo WHERE idInstanciaInimigo = old.idInstanciaInimigo;
+    RETURN NULL;
+END;
+$deletar_inimigo$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION deletar_civil() RETURNS trigger AS $deletar_civil$
+BEGIN
+    DELETE FROM tbl_instancia_civil WHERE idInstanciaCivil = old.idInstanciaCivil;
+    RETURN NULL;
+END;
+$deletar_civil$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION deletar_item() RETURNS trigger AS $deletar_item$
+BEGIN
+    DELETE FROM tbl_instancia_item WHERE id_instancia_item = old.id_instancia_item;
+    RETURN NULL;
+END;
+$deletar_item$ LANGUAGE plpgsql;
