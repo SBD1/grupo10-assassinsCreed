@@ -1,6 +1,7 @@
 import pygame, sys
 from settings import *
 from level import Level
+from config.conexao import Conexao
 
 #Principal
 class Game:
