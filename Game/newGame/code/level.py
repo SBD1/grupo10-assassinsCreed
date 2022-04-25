@@ -1,13 +1,15 @@
-import pygame 
+import pygame
+from pyparsing import col
+from pytest import console_main 
 from settings import *
 from tile import Tile
 from player import Player
 from debug import debug
 from debug import debug
 from config.conexao import Conexao
+import tkinter as tk
 from tkinter import *
-from tkinter import messagebox
-
+from tkinter import Entry, Label, messagebox
 
 class Level:
 	def __init__(self):
@@ -44,16 +46,29 @@ class Level:
 			if int(coordenada_y) > 650 and int(coordenada_y) < 820:
 				tecla = pygame.key.get_pressed()
 				if tecla[97] == 1:
-					sql = "SELECT utilitario.descricao, utilitario.valor, utilitario.categoria, utilitario.local  FROM tbl_instancia_Item instItem "
+					sql = "SELECT utilitario.idutilitario, utilitario.descricao, utilitario.valor FROM tbl_instancia_Item instItem "
 					sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia " 
 					sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
 					sql += "JOIN tbl_utilitario utilitario ON instItem.id_item = utilitario.idutilitario "
 					sql += "WHERE id_mercado = 1;" 
-					inventario_mercado = Conexao.consultar_db(sql)
+					lista_inventario_mercado = Conexao.consultar_db(sql)
+					inventario_mercado = str(lista_inventario_mercado)
+					inventario_mercado = Level.formata_string(inventario_mercado)
 					print(inventario_mercado)
 
-					messagebox.showinfo("showinfo", inventario_mercado)
-					# root.mainloop()
+					mercado = tk.Tk()
+					label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")
+					label1.grid(column=0, row=0, padx=10, pady=2)
+					label2 = Label(mercado, text = inventario_mercado)
+					label2.grid(column=0, row=1, padx=10, pady=2)
+					box = Entry(mercado)
+					box.grid(column=0, row=2, padx=10, pady=2)
+					print(box.get())
+
+					botao = Button(mercado, text="Comprar", command=Level.comprarItem(box.get()))
+					botao.grid(column=0, row=3, padx=10, pady=2)
+					
+					mercado.mainloop()
 
 
 		debug(self.player.direction)
@@ -67,6 +82,17 @@ class Level:
 		array = rect.split(",")
 		coordenada_x = array[1]
 		return coordenada_x[1:] 
+
+	def formata_string(str):
+		str = str.replace("[","").replace("]","")
+		str = str.replace("(", "").replace(",","")
+		str = str.replace(")","\n")
+		return str
+
+	def comprarItem(item):
+		print(item)
+		if item == '1':
+			print('voce comprou um remedio')
 
 class YSortCameraGroup(pygame.sprite.Group):
 	def __init__(self):
