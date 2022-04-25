@@ -207,3 +207,38 @@ BEGIN
     INSERT INTO tbl_quadrado_localiza_item (id_instancia, coordenada_x, coordenada_y, area) VALUES (item_id, x, y, area);
 END;
 $$ LANGUAGE plpgsql;
+
+-- pega um item do chão e coloca no inventário do heroi
+CREATE OR REPLACE FUNCTION pega_item(terreno INT, area text, x INT, y INT, quadrado_id BIGINT) RETURNS void AS $$
+DECLARE
+    item_id BIGINT;
+    tipo_item TEXT;
+    heroi_id INT;
+    not_null_count INT;
+    inventario_id inventario.id%TYPE;
+    rec record;
+BEGIN
+    -- pega o id do heroi
+    SELECT tbl_heroi.id_heroi INTO heroi_id FROM tbl_heroi
+        WHERE tbl_quadrado.Quadrado_id = quadrado_id;
+
+    -- pega id do item
+    SELECT tbl_quadrado_localiza_item.id_instancia INTO item_id FROM tbl_quadrado_localiza_item 
+        WHERE tbl_quadrado_localiza_item.area = area 
+        AND tbl_quadrado_localiza_item.coordenada_x = x AND tbl_quadrado_localiza_item.coordenada_y = y;
+
+    SELECT tbl_tipo_item.tipoItem INTO tipo_item FROM tbl_tipo_item WHERE tbl_tipo_item.idItem = item_id;
+
+    SELECT tbl_heroi.idinventario INTO inventario_id FROM tbl_heroi WHERE tbl_heroi.id_heroi = heroi_id;
+
+    FOR rec IN SELECT * INTO rec FROM tbl_inventario_armazena_item WHERE idInventario = inventario_id
+    LOOP
+        IF (rec.idInstancia IS NULL) THEN
+            UPDATE tbl_inventario_armazena_item SET idInstancia=item_id WHERE id_inventario = rec.idInventario;
+                WHERE tbl_quadrado_localiza_item.area = area 
+                AND tbl_quadrado_localiza_item.coordenada_x = x AND tbl_quadrado_localiza_item.coordenada_y = y; 
+            RETURN;
+        END IF;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
