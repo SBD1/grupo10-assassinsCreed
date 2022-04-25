@@ -2,6 +2,10 @@ import pygame, sys
 from settings import *
 from level import Level
 from config.conexao import Conexao
+from pygamepopup.menu_manager import MenuManager
+
+
+from pygamepopup.menu_manager import MenuManager
 
 #Principal
 class Game:

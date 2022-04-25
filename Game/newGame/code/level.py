@@ -5,6 +5,9 @@ from player import Player
 from debug import debug
 from debug import debug
 from config.conexao import Conexao
+from pygamepopup.components import Button, InfoBox
+
+
 
 class Level:
 	def __init__(self):
@@ -35,6 +38,21 @@ class Level:
 		# Atualização coordenada enquanto move
 		self.visible_sprites.custom_draw(self.player)
 		self.visible_sprites.update()
+		coordenada_x = Level.busca_coordenada_x(str(self.player.rect))
+		coordenada_y = Level.busca_coordenada_y(str(self.player.rect))
+		if int(coordenada_x) > 1100 and int(coordenada_x) < 1300:
+			if int(coordenada_y) > 650 and int(coordenada_y) < 820:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					sql = "SELECT utilitario.descricao, utilitario.valor, utilitario.categoria, utilitario.local  FROM tbl_instancia_Item instItem "
+					sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia " 
+					sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
+					sql += "JOIN tbl_utilitario utilitario ON instItem.id_item = utilitario.idutilitario "
+					sql += "WHERE id_mercado = 1;" 
+					inventario_mercado = Conexao.consultar_db(sql)
+					print(inventario_mercado)
+
+
 		debug(self.player.direction)
 
 	def busca_coordenada_x(rect):
