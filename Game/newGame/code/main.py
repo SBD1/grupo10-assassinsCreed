@@ -20,6 +20,9 @@ class Game:
 		while True:
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
+					coordenada_x = Level.busca_coordenada_x(str(self.level.player.rect))
+					coordenada_y = Level.busca_coordenada_y(str(self.level.player.rect))
+					insere_coordenada = Conexao.update_db("UPDATE public.tbl_heroi SET coordenada_x_mapa="+ coordenada_x +", coordenada_y_mapa ="+ coordenada_y +" WHERE id_heroi = 1;")
 					pygame.quit()
 					sys.exit()
 

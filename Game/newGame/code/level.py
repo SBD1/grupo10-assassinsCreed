@@ -4,6 +4,7 @@ from tile import Tile
 from player import Player
 from debug import debug
 from debug import debug
+from config.conexao import Conexao
 
 class Level:
 	def __init__(self):
@@ -26,15 +27,25 @@ class Level:
 				if col == 'x':
 					Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
 				if col == 'p': # PLAYER LOCALIZAÇÃO SPAWN
-					self.player = Player((1376,406),[self.visible_sprites],self.obstacle_sprites)
+					coordenada_x_mapa = Conexao.consultar_unico_db("Select coordenada_x_mapa from tbl_heroi where id_heroi = 1")
+					coordenada_y_mapa = Conexao.consultar_unico_db("Select coordenada_y_mapa from tbl_heroi where id_heroi = 1")
+					self.player = Player((int(coordenada_x_mapa),int(coordenada_y_mapa)),[self.visible_sprites],self.obstacle_sprites)
 
 	def run(self):
 		# Atualização coordenada enquanto move
 		self.visible_sprites.custom_draw(self.player)
 		self.visible_sprites.update()
-		print(self.player.rect)
 		debug(self.player.direction)
 
+	def busca_coordenada_x(rect):
+		array = rect.split(",")
+		coordenada_x = array[0]
+		return coordenada_x[6:] 
+
+	def busca_coordenada_y(rect):
+		array = rect.split(",")
+		coordenada_x = array[1]
+		return coordenada_x[1:] 
 
 class YSortCameraGroup(pygame.sprite.Group):
 	def __init__(self):

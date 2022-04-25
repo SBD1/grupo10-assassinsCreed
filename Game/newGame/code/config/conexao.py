@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 import psycopg2
+import re
 
 class Conexao(object):
     _db=None;
@@ -27,14 +28,38 @@ class Conexao(object):
         con.close()
         return registros
 
+    def consultar_unico_db(sql):
+        con = Conexao.conecta_db()
+        cur = con.cursor()
+        cur.execute(sql)
+        recset = cur.fetchone()
+        cur.close()
+        con.close()
+        resultado = re.sub(r"[^a-zA-Z0-9]","",str(recset))
+        return resultado
+
 
     def insert_db(sql):
         con = Conexao.conecta_db()
         cur = con.cursor()
+        print(sql)
         response = cur.execute(sql)
+        con.commit()
+
         cur.close()
         con.close()
+        print(response)
         return response
+
+
+    def update_db(sql):
+        con = Conexao.conecta_db()
+        cur = con.cursor()
+        cur.execute(sql)
+        con.commit()
+        cur.close()
+        con.close()
+
 
     def fechar(self):
         self._db.close()
