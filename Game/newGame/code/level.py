@@ -26,12 +26,13 @@ class Level:
 				if col == 'x':
 					Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
 				if col == 'p': # PLAYER LOCALIZAÇÃO SPAWN
-					self.player = Player((1500,2000),[self.visible_sprites],self.obstacle_sprites)
+					self.player = Player((1376,406),[self.visible_sprites],self.obstacle_sprites)
 
 	def run(self):
 		# Atualização coordenada enquanto move
 		self.visible_sprites.custom_draw(self.player)
 		self.visible_sprites.update()
+		print(self.player.rect)
 		debug(self.player.direction)
 
 
