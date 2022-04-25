@@ -70,6 +70,62 @@ class Level:
 					
 					mercado.mainloop()
 
+		if int(coordenada_x) > 1560 and int(coordenada_x) < 1610:
+			if int(coordenada_y) > 1050 and int(coordenada_y) < 1100:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					sql = "SELECT utilitario.idutilitario, utilitario.descricao, utilitario.valor FROM tbl_instancia_Item instItem "
+					sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia " 
+					sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
+					sql += "JOIN tbl_utilitario utilitario ON instItem.id_item = utilitario.idutilitario "
+					sql += "WHERE id_mercado = 1;" 
+					lista_inventario_mercado = Conexao.consultar_db(sql)
+					inventario_mercado = str(lista_inventario_mercado)
+					inventario_mercado = Level.formata_string(inventario_mercado)
+					print(inventario_mercado)
+
+					mercado = tk.Tk()
+					label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")
+					label1.grid(column=0, row=0, padx=10, pady=2)
+					label2 = Label(mercado, text = inventario_mercado)
+					label2.grid(column=0, row=1, padx=10, pady=2)
+					box = Entry(mercado)
+					box.grid(column=0, row=2, padx=10, pady=2)
+					print(box.get())
+
+					botao = Button(mercado, text="Comprar", command=Level.comprarItem(box.get()))
+					botao.grid(column=0, row=3, padx=10, pady=2)
+					
+					mercado.mainloop()
+
+		if int(coordenada_x) > 1560 and int(coordenada_x) < 1870:
+			if int(coordenada_y) > 1600 and int(coordenada_y) < 1940:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					sql = "SELECT utilitario.idutilitario, utilitario.descricao, utilitario.valor FROM tbl_instancia_Item instItem "
+					sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia " 
+					sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
+					sql += "JOIN tbl_utilitario utilitario ON instItem.id_item = utilitario.idutilitario "
+					sql += "WHERE id_mercado = 1;" 
+					lista_inventario_mercado = Conexao.consultar_db(sql)
+					inventario_mercado = str(lista_inventario_mercado)
+					inventario_mercado = Level.formata_string(inventario_mercado)
+					print(inventario_mercado)
+
+					mercado = tk.Tk()
+					label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")
+					label1.grid(column=0, row=0, padx=10, pady=2)
+					label2 = Label(mercado, text = inventario_mercado)
+					label2.grid(column=0, row=1, padx=10, pady=2)
+					box = Entry(mercado)
+					box.grid(column=0, row=2, padx=10, pady=2)
+					print(box.get())
+
+					botao = Button(mercado, text="Comprar", command=Level.comprarItem(box.get()))
+					botao.grid(column=0, row=3, padx=10, pady=2)
+					
+					mercado.mainloop()
+
 
 		debug(self.player.direction)
 
