@@ -170,10 +170,40 @@ BEGIN
 END;
 $deletar_civil$ LANGUAGE plpgsql;
 
-
 CREATE OR REPLACE FUNCTION deletar_item() RETURNS trigger AS $deletar_item$
 BEGIN
     DELETE FROM tbl_instancia_item WHERE id_instancia_item = old.id_instancia_item;
     RETURN NULL;
 END;
 $deletar_item$ LANGUAGE plpgsql;
+
+-- Dropa um item do usuário
+
+CREATE OR REPLACE FUNCTION drop_item(id_player INTEGER, pos_item SMALLINT) RETURNS VOID AS $$
+DECLARE
+	invent_id INTEGER;
+
+BEGIN
+	SELECT tbl_heroi.idinventario INTO invent_id FROM tbl_heroi where id_heroi = id_player;
+	UPDATE tbl_inventario_armazena_item SET tbl_instancia_Item=NULL WHERE idInventario = invent_id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Adiciona item no quadrado
+
+CREATE OR REPLACE FUNCTION add_item_to_quadrado(id_quadrado, x INT, y INT, area TEXT, terreno INT, item_description TEXT, item_type TEXT) RETURNS void AS $$
+DECLARE
+    item_id tbl_tipo_item.idItem%TYPE;
+BEGIN
+    IF (item_type = 'Utility') THEN
+        SELECT tbl_utilitario.idUtilitario INTO item_id FROM tbl_utilitario WHERE tbl_utilitario.descricao = item_description;
+    ELSIF (item_type = 'Weapon') THEN
+        SELECT tbl_arma.idArma INTO item_id FROM tbl_arma WHERE tbl_arma.descricao = item_description;
+    ELSIF (item_type = 'Armor') THEN
+        SELECT tbl_armadura.idArmadura INTO item_id FROM tbl_armadura WHERE tbl_armadura.descricao = item_description;
+    END IF;
+
+    INSERT INTO tbl_quadrado (Quadrado_id,coordenada_x, coordenada_y, area, terreno) VALUES (id_quadrado, x, y, area, 0);
+    INSERT INTO tbl_quadrado_localiza_item (id_instancia, coordenada_x, coordenada_y, area) VALUES (item_id, x, y, area);
+END;
+$$ LANGUAGE plpgsql;
