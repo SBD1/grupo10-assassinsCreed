@@ -1,3 +1,5 @@
 pygame
 pathfinding
 psycopg2
+pygame-popup
+tk

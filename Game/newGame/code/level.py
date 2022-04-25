@@ -5,8 +5,8 @@ from player import Player
 from debug import debug
 from debug import debug
 from config.conexao import Conexao
-from pygamepopup.components import Button, InfoBox
-
+from tkinter import *
+from tkinter import messagebox
 
 
 class Level:
@@ -51,6 +51,9 @@ class Level:
 					sql += "WHERE id_mercado = 1;" 
 					inventario_mercado = Conexao.consultar_db(sql)
 					print(inventario_mercado)
+
+					messagebox.showinfo("showinfo", inventario_mercado)
+					# root.mainloop()
 
 
 		debug(self.player.direction)
