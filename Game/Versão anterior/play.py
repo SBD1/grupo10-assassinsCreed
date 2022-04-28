@@ -86,7 +86,6 @@ class Roomba(pygame.sprite.Sprite):
 	def get_coordenada(self): #Transforma a posição atual em uma coordenada
 		col = self.rect.centerx // 32
 		fila = self.rect.centery // 32
-		return (col,fila)
 
 	def define_caminho(self,caminho):
 		self.caminho = caminho
@@ -125,12 +124,12 @@ class Roomba(pygame.sprite.Sprite):
 		self.check_collisions()
 		self.rect.center = self.pos
 		# Testando conexao com bd
-		# reg = Conexao.consultar_db('select * from public.tbl_armadura')
 
 # base inicial
 pygame.init()
 screen = pygame.display.set_mode((1280,736))
 clock = pygame.time.Clock()
+
 
 # mapa
 bg_surf = pygame.image.load('img\map.png').convert()
