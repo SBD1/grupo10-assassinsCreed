@@ -3,6 +3,32 @@ WIDTH    = 1280
 HEIGTH   = 720
 FPS      = 60
 TILESIZE = 64
+
+# Visualização da barra de vida e etc, ui
+BAR_HEIGHT = 20
+TAMANHO_BARRA = 200
+FONTE = '../imagens/fonte/joystix.ttf'
+TAMANHO_FONTE = 18
+
+# CORES
+WATER_COLOR = '#71ddee'
+COR_FUNDO = '#222222'
+COR_BORDA = '#111111'
+COR_TEXTO = '#EEEEEE'
+
+# Cor barra
+COR_VIDA = 'red'
+
+
+# Inimigo
+monster_data = {
+	'squid': {'health': 100, 'damage':20, 'speed': 3, 'resistance': 3, 'attack_radius': 80, 'notice_radius': 360},
+	'raccoon': {'health': 300, 'damage':40,'speed': 2, 'resistance': 3, 'attack_radius': 120, 'notice_radius': 400},
+	'spirit': {'health': 100, 'damage':8, 'speed': 4, 'resistance': 3, 'attack_radius': 60, 'notice_radius': 350},
+	'bamboo': {'health': 70, 'damage':6, 'speed': 3, 'resistance': 3, 'attack_radius': 50, 'notice_radius': 300}}
+
+
+
 # x = os locais em que o boneco não pode andar
 # p = BONECO
 
