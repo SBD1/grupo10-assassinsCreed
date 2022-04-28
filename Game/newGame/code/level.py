@@ -1,15 +1,10 @@
-import pygame
-from pyparsing import col
-from pytest import console_main 
+import pygame 
 from settings import *
 from tile import Tile
 from player import Player
 from debug import debug
-from debug import debug
-from config.conexao import Conexao
-import tkinter as tk
-from tkinter import *
-from tkinter import Entry, Label, messagebox
+from ui import UI
+from support import *
 
 class Level:
 	def __init__(self):
@@ -22,56 +17,33 @@ class Level:
 		self.obstacle_sprites = pygame.sprite.Group()
 
 		# abre o mapa
-		self.create_map()
+		self.cria_mapa()
 
-	def create_map(self):
-		for row_index,row in enumerate(WORLD_MAP):
-			for col_index, col in enumerate(row):
-				x = col_index * TILESIZE # Tamanho coluna e linha
-				y = row_index * TILESIZE # Tamanho coluna e linha
-				if col == 'x':
-					Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
-				if col == 'p': # PLAYER LOCALIZAÇÃO SPAWN
-					coordenada_x_mapa = Conexao.consultar_unico_db("Select coordenada_x_mapa from tbl_heroi where id_heroi = 1")
-					coordenada_y_mapa = Conexao.consultar_unico_db("Select coordenada_y_mapa from tbl_heroi where id_heroi = 1")
-					self.player = Player((int(coordenada_x_mapa),int(coordenada_y_mapa)),[self.visible_sprites],self.obstacle_sprites)
+		# interface (UI)
+		self.ui = UI()
+
+	def cria_mapa(self):
+		layouts = {
+			'bloqueado': import_csv_layout('../code/mapa/Block_Bloqueado.csv'), # CSV do local em que o boneco não pode passar
+		}
+		# Leitor de CSV
+		for style, layout in layouts.items():
+			for row_index, row in enumerate(layout):
+				for col_index, col in enumerate(row):
+					if col != '-1':
+						x = col_index * TILESIZE
+						y = row_index * TILESIZE
+						if style == 'bloqueado':
+							Tile((x, y), [self.obstacle_sprites], 'invisible')
+
+		self.player = Player((700, 500), [self.visible_sprites], self.obstacle_sprites) # Local de SPAWN boneco
 
 	def run(self):
 		# Atualização coordenada enquanto move
 		self.visible_sprites.custom_draw(self.player)
 		self.visible_sprites.update()
-		coordenada_x = Level.busca_coordenada_x(str(self.player.rect))
-		coordenada_y = Level.busca_coordenada_y(str(self.player.rect))
-		if int(coordenada_x) > 1100 and int(coordenada_x) < 1300:
-			if int(coordenada_y) > 650 and int(coordenada_y) < 820:
-				tecla = pygame.key.get_pressed()
-				if tecla[97] == 1:
-					sql = "SELECT utilitario.idutilitario, utilitario.descricao, utilitario.valor FROM tbl_instancia_Item instItem "
-					sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia " 
-					sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
-					sql += "JOIN tbl_utilitario utilitario ON instItem.id_item = utilitario.idutilitario "
-					sql += "WHERE id_mercado = 1;" 
-					lista_inventario_mercado = Conexao.consultar_db(sql)
-					inventario_mercado = str(lista_inventario_mercado)
-					inventario_mercado = Level.formata_string(inventario_mercado)
-					print(inventario_mercado)
-
-					mercado = tk.Tk()
-					label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")
-					label1.grid(column=0, row=0, padx=10, pady=2)
-					label2 = Label(mercado, text = inventario_mercado)
-					label2.grid(column=0, row=1, padx=10, pady=2)
-					box = Entry(mercado)
-					box.grid(column=0, row=2, padx=10, pady=2)
-					print(box.get())
-
-					botao = Button(mercado, text="Comprar", command=Level.comprarItem(box.get()))
-					botao.grid(column=0, row=3, padx=10, pady=2)
-					
-					mercado.mainloop()
-
-
 		debug(self.player.direction)
+		self.ui.display(self.player)
 
 	def busca_coordenada_x(rect):
 		array = rect.split(",")
@@ -83,18 +55,7 @@ class Level:
 		coordenada_x = array[1]
 		return coordenada_x[1:] 
 
-	def formata_string(str):
-		str = str.replace("[","").replace("]","")
-		str = str.replace("(", "").replace(",","")
-		str = str.replace(")","\n")
-		return str
-
-	def comprarItem(item):
-		print(item)
-		if item == '1':
-			print('voce comprou um remedio')
-
-class YSortCameraGroup(pygame.sprite.Group):
+class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
 	def __init__(self):
 
 		# Configuração geral do tamanho
