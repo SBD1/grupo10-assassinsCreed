@@ -66,7 +66,6 @@ class Level:
 			if int(coordenada_y) > 596 and int(coordenada_y) < 796:
 				tecla = pygame.key.get_pressed()
 				if tecla[97] == 1:
-					print("entrei")
 					Level.mercadoDeArmaduras()
 
 		debug(self.player.direction)
@@ -142,17 +141,17 @@ class Level:
 		mercado.mainloop()
 
 	def mercadoDeArmaduras():
-		sql = "SELECT arma.idarma, arma.descricao, arma.valor, arma.dano FROM tbl_instancia_Item instItem "
+		sql = "SELECT armadura.idarmadura, armadura.descricao, armadura.valor, armadura.defesa FROM tbl_instancia_Item instItem "
 		sql += "JOIN tbl_mercado_possui_item possuiItem ON instItem.id_instancia_item = possuiItem.id_instancia "
 		sql += "JOIN tbl_tipo_item tipoItem ON instItem.id_item = tipoItem.id_item "
-		sql += "JOIN tbl_arma arma ON instItem.id_item = arma.idarma "
-		sql += "WHERE id_mercado = 2;"
+		sql += "JOIN tbl_armadura armadura ON instItem.id_item = armadura.idarmadura "
+		sql += "WHERE id_mercado = 3;"
 		lista_inventario_mercado = Conexao.consultar_db(sql)
 		inventario_mercado = str(lista_inventario_mercado)
 		inventario_mercado = Level.formata_string(inventario_mercado)
 
 		mercado = tk.Tk()
-		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR | DANO)")
+		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR | DEFESA)")
 		label1.grid(column=0, row=0, padx=10, pady=2)
 		label2 = Label(mercado, text = inventario_mercado)
 		label2.grid(column=0, row=1, padx=10, pady=2)
