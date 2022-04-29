@@ -28,7 +28,8 @@ class Level:
 		self.ui = UI()
 		
 		#QTDE moedas
-		self.qtde_moeda = 0 # Número de moedas
+		self.qtde_moeda = self.player.coins # Número de moedas
+		self.qtde_xp = self.player.xp 
 
 	def cria_mapa(self):
 		layouts = {
@@ -47,10 +48,6 @@ class Level:
 		coordenada_x_mapa = Conexao.consultar_unico_db("Select coordenada_x_mapa from tbl_heroi where id_heroi = 1")
 		coordenada_y_mapa = Conexao.consultar_unico_db("Select coordenada_y_mapa from tbl_heroi where id_heroi = 1")	
 		self.player = Player((int(coordenada_x_mapa), int(coordenada_y_mapa)), [self.visible_sprites], self.obstacle_sprites) # Local de SPAWN boneco
-
-	def ataqueInimigo(health):
-		#print(health)
-		return health - 0.05
 
 	def run(self):
 		# Atualização coordenada enquanto move
@@ -83,6 +80,18 @@ class Level:
 		if int(coordenada_x) > 1010 and int(coordenada_x) < 1200:
 			if int(coordenada_y) > 2210 and int(coordenada_y) < 2370:
 					self.player.health = Level.ataqueInimigo(self.player.health)
+		
+		if int(coordenada_x) > 2840 and int(coordenada_x) < 2920:
+			if int(coordenada_y) > 1110 and int(coordenada_y) < 1170:
+					self.player.health = Level.florDoCampo(self.player.health)
+
+		if int(coordenada_x) > 1690 and int(coordenada_x) < 1770:
+			if int(coordenada_y) > 400 and int(coordenada_y) < 475:
+					self.player.health = Level.florDoCampo(self.player.health)
+
+		if int(coordenada_x) > 1630 and int(coordenada_x) < 1700:
+			if int(coordenada_y) > 2585 and int(coordenada_y) < 2640:
+					self.player.health = Level.florDoCampo(self.player.health)
 
 		debug(self.player.direction)
 		self.ui.display(self.player)
@@ -123,7 +132,7 @@ class Level:
 		
 
 		mercado = tk.Tk()
-		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")
+		label1 = Label(mercado, text = "Mercado de UTILITARIOS (ID | ITEM | VALOR)")
 		label1.grid(column=0, row=0, padx=10, pady=2)
 		label2 = Label(mercado, text = inventario_mercado)
 		label2.grid(column=0, row=1, padx=10, pady=2)
@@ -147,7 +156,7 @@ class Level:
 		inventario_mercado = Level.formata_string(inventario_mercado)
 
 		mercado = tk.Tk()
-		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR | DANO)")
+		label1 = Label(mercado, text = "Mercado de ARMAS (ID | ITEM | VALOR | DANO)")
 		label1.grid(column=0, row=0, padx=10, pady=2)
 		label2 = Label(mercado, text = inventario_mercado)
 		label2.grid(column=0, row=1, padx=10, pady=2)
@@ -171,7 +180,7 @@ class Level:
 		inventario_mercado = Level.formata_string(inventario_mercado)
 
 		mercado = tk.Tk()
-		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR | DEFESA)")
+		label1 = Label(mercado, text = "Mercado de ARMADURAS (ID | ITEM | VALOR | DEFESA)")
 		label1.grid(column=0, row=0, padx=10, pady=2)
 		label2 = Label(mercado, text = inventario_mercado)
 		label2.grid(column=0, row=1, padx=10, pady=2)
@@ -183,6 +192,17 @@ class Level:
 		botao.grid(column=0, row=3, padx=10, pady=2)
 
 		mercado.mainloop()
+
+	def ataqueInimigo(health):
+		if health == 0:
+			return health
+		return health - 0.05
+
+	def florDoCampo(health):
+		if(health == 100):
+			return health
+		else:
+			return health + 0.05
 
 class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
 	def __init__(self):

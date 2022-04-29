@@ -11,17 +11,21 @@ class Player(Entidade):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-26) # Retângulo de colisão
 
-		self.speed = 5 # VELOCIDADE PADRÃO
+		
 
 		self.obstacle_sprites = obstacle_sprites
 
 
 	# configurações do player
-		self.stats = {'vida': 100, 'energia': 60, 'ataque':10, 'magica': 4, 'speed': 6} # STATUS DO JOGADOR
-		vidaheroi = str(Conexao.consultar_db("SELECT vida, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
-		vidaheroi = vidaheroi.split(",")
-		vidaheroi = vidaheroi[0].replace("[(","")
-		self.health = int(vidaheroi)
+		self.stats = {'vida': 100} # STATUS DO JOGADOR
+		self.name =Player.nomeHeroi()
+		self.coins = Player.moedasHeroi()
+		self.health = Player.vidaHeroi()
+		self.force = Player.forcaHeroi()
+		self.xp = Player.xpHeroi()
+		self.speed = Player.velocidadeHeroi() # VELOCIDADE PADRÃO
+
+		print(self.name)
 
 	def get_health(self):
 		return self.health
@@ -50,3 +54,40 @@ class Player(Entidade):
 	def update(self):
 		self.input() # ENTRADA NO TECLADO
 		self.move(self.speed) # DEFININDO A VELOCIDADE
+
+	def vidaHeroi():
+		x = str(Conexao.consultar_db("SELECT vida, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return int(x)
+
+	def moedasHeroi():
+		x = str(Conexao.consultar_db("SELECT moedas, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return int(x)
+
+	def velocidadeHeroi():
+		x = str(Conexao.consultar_db("SELECT velocidade, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return int(x)
+
+	def forcaHeroi():
+		x = str(Conexao.consultar_db("SELECT forca, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return int(x)
+	
+	def xpHeroi():
+		x = str(Conexao.consultar_db("SELECT xp, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return int(x)
+	
+	def nomeHeroi():
+		x = str(Conexao.consultar_db("SELECT nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return str(x)
+

@@ -24,6 +24,7 @@ class Game:
 					coordenada_x = Level.busca_coordenada_x(str(self.level.player.rect))
 					coordenada_y = Level.busca_coordenada_y(str(self.level.player.rect))
 					vida = str(int(self.level.player.health))
+					#forca = str(self...)  caso fizesse porcao de forca ao pode atualizar no BD seila
 					insere_coordenada = Conexao.update_db("UPDATE public.tbl_heroi SET coordenada_x_mapa="+ coordenada_x +", coordenada_y_mapa ="+ coordenada_y +", vida="+vida+" WHERE id_heroi = 1;")
 					pygame.quit()
 					sys.exit()
