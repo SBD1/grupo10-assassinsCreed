@@ -26,6 +26,10 @@ class Level:
 		# interface (UI)
 		self.ui = UI()
 
+        #QTDE moedas
+		self.qtde_moeda = self.player.coins # Número de moedas
+		self.qtde_xp = self.player.xp 
+
 	def cria_mapa(self):
 		layouts = {
 			'bloqueado': import_csv_layout('../code/mapa/Block_Bloqueado.csv'), # CSV do local em que o boneco não pode passar
