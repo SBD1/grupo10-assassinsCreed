@@ -10,6 +10,16 @@ class UI:
 
 		# barra de vida tamanho
 		self.health_bar_rect = pygame.Rect(10,10,TAMANHO_BARRA,BAR_HEIGHT)
+		
+		# Mostra imagem e localização moedas na tela
+		self.inventario = pygame.image.load('../imagens/jogador/moeda.png').convert_alpha() # Imagem moeda
+		self.inventario_rect = self.inventario.get_rect(topleft = (20,30)) # Localização na tela moeda
+		
+	def mostrar_inventario(self, quantidade):
+		self.display_surface.blit(self.inventario,self.inventario_rect) 
+		inv_quantidade_surf = self.font.render(str(quantidade),False, '#33323d') # fonte da moeda
+		inv_quantidade_rect = inv_quantidade_surf.get_rect(midleft = (self.inventario_rect.right + 4, self.inventario_rect.centery)) 
+		self.display_surface.blit(inv_quantidade_surf, inv_quantidade_rect)
 
 
 
