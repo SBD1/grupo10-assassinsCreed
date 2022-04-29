@@ -1,4 +1,5 @@
 import pygame
+import time
 from pyparsing import col
 from settings import *
 from tile import Tile
@@ -44,6 +45,10 @@ class Level:
 		coordenada_y_mapa = Conexao.consultar_unico_db("Select coordenada_y_mapa from tbl_heroi where id_heroi = 1")	
 		self.player = Player((int(coordenada_x_mapa), int(coordenada_y_mapa)), [self.visible_sprites], self.obstacle_sprites) # Local de SPAWN boneco
 
+	def ataqueInimigo(health):
+		#print(health)
+		return health - 0.05
+
 	def run(self):
 		# Atualização coordenada enquanto move
 		self.visible_sprites.custom_draw(self.player)
@@ -67,6 +72,14 @@ class Level:
 				tecla = pygame.key.get_pressed()
 				if tecla[97] == 1:
 					Level.mercadoDeArmaduras()
+		
+		if int(coordenada_x) > 1660 and int(coordenada_x) < 1815:
+			if int(coordenada_y) > 1385 and int(coordenada_y) < 1535:
+					self.player.health = Level.ataqueInimigo(self.player.health)
+
+		if int(coordenada_x) > 1010 and int(coordenada_x) < 1200:
+			if int(coordenada_y) > 2210 and int(coordenada_y) < 2370:
+					self.player.health = Level.ataqueInimigo(self.player.health)
 
 		debug(self.player.direction)
 		self.ui.display(self.player)
@@ -101,6 +114,8 @@ class Level:
 		lista_inventario_mercado = Conexao.consultar_db(sql)
 		inventario_mercado = str(lista_inventario_mercado)
 		inventario_mercado = Level.formata_string(inventario_mercado)
+
+		
 
 		mercado = tk.Tk()
 		label1 = Label(mercado, text = "Itens do mercado (ID | ITEM | VALOR)")

@@ -2,7 +2,7 @@ import pygame, sys
 from settings import *
 from level import Level
 from config.conexao import Conexao
-
+ 
 
 #Principal
 class Game:
@@ -23,7 +23,8 @@ class Game:
 				if event.type == pygame.QUIT:
 					coordenada_x = Level.busca_coordenada_x(str(self.level.player.rect))
 					coordenada_y = Level.busca_coordenada_y(str(self.level.player.rect))
-					insere_coordenada = Conexao.update_db("UPDATE public.tbl_heroi SET coordenada_x_mapa="+ coordenada_x +", coordenada_y_mapa ="+ coordenada_y +" WHERE id_heroi = 1;")
+					vida = str(int(self.level.player.health))
+					insere_coordenada = Conexao.update_db("UPDATE public.tbl_heroi SET coordenada_x_mapa="+ coordenada_x +", coordenada_y_mapa ="+ coordenada_y +", vida="+vida+" WHERE id_heroi = 1;")
 					pygame.quit()
 					sys.exit()
 

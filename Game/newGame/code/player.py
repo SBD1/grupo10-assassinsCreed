@@ -1,6 +1,7 @@
 import pygame 
 from settings import *
 from entidade import Entidade
+from config.conexao import Conexao
 
 
 class Player(Entidade):
@@ -17,7 +18,16 @@ class Player(Entidade):
 
 	# configurações do player
 		self.stats = {'vida': 100, 'energia': 60, 'ataque':10, 'magica': 4, 'speed': 6} # STATUS DO JOGADOR
-		self.health = self.stats['vida'] * 0.5
+		vidaheroi = str(Conexao.consultar_db("SELECT vida, nomecompleto FROM public.tbl_heroi WHERE id_heroi = 1;"))
+		vidaheroi = vidaheroi.split(",")
+		vidaheroi = vidaheroi[0].replace("[(","")
+		self.health = int(vidaheroi)
+
+	def get_health(self):
+		return self.health
+
+	def set_health(self, x):
+		return self.health == x 
 
 	# MOVIMENTO NAS SETAS DO TECLADO
 	def input(self):
