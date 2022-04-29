@@ -273,7 +273,23 @@ class Level:
 			label1.grid(column=2, row=2, padx=10, pady=2)
 			mercado.mainloop()
 			return Player.updateMoedasHeroi(moedasAtualiza);	
-
+   
+	def respawnHeroi(health):   
+        vidaAtual = Player.updateVidaHeroi(100)	
+        moedasAtual = Player.updateMoedasHeroi(0)   
+	    velocidadeAtual = Player.updateVelocidadeHeroi(4)	
+   	    forcaAtual = Player.updateForcaHeroi(3)	
+   	    xpAtual = Player.updateXPHeroi(0) 
+        coordenadaXAtual = Player.updateCoordenadaXHeroi(700)
+        coordenadaYAtual = Player.updateCoordenadaYHeroi(500)
+   
+        if health == 0:
+            label1 = Label(mercado, text = "Você norreu!\n")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+       
+        return vidaAtual, moedasAtual, velocidadeAtual, forcaAtual, xpAtual, coordenadaXAtual,coordenadaYAtual;
+         
+   
 class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
 	def __init__(self):
 
@@ -302,3 +318,5 @@ class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o 
 		for sprite in sorted(self.sprites(),key = lambda sprite: sprite.rect.centery):
 			offset_pos = sprite.rect.topleft - self.offset
 			self.display_surface.blit(sprite.image,offset_pos)
+
+     
