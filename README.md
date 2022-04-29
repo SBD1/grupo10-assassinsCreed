@@ -8,7 +8,7 @@ Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, n
 ## Colaboradores
 
 
-
+<div align="center">
 <table>
   
   <tr>
@@ -44,16 +44,8 @@ Repositório para desenvolvimento do projeto de Assassin's Creed, do grupo 10, n
         </sub>
       </a>
     </td>
-    <td align="center">
-      <a href="https://github.com/wesleysantos00">
-        <img src="https://avatars.githubusercontent.com/u/54296715?v=4" width="100px;" alt="Foto Wesley"/><br>
-        <sub>
-          <b>Wesley Santos</b>
-        </sub>
-      </a>
-    </td>
 
     
 </table>
-
+</div>
 <br/> 
