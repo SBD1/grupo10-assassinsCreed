@@ -25,6 +25,9 @@ class Level:
 
 		# interface (UI)
 		self.ui = UI()
+		
+		#QTDE moedas
+		self.qtde_moeda = 0 # Número de moedas
 
 	def cria_mapa(self):
 		layouts = {
@@ -70,6 +73,8 @@ class Level:
 
 		debug(self.player.direction)
 		self.ui.display(self.player)
+		
+		self.ui.mostrar_inventario(self.qtde_moeda) # Mostrar moedas
 
 	def busca_coordenada_x(rect):
 		array = rect.split(",")
