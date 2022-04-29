@@ -111,7 +111,11 @@ class Level:
 				if tecla[97] == 1:
 					self.qtde_moeda = Level.compraArmaLaminaAssassino(self.qtde_moeda) 
 
-
+		if(self.player.health <= 0):
+			Level.respawnHeroi()
+			self.qtde_moeda = Player.moedasHeroi()
+			self.player.health = Player.vidaHeroi()
+			Level.cria_mapa(self)
 
 		debug(self.player.direction)
 		self.ui.display(self.player)
@@ -274,20 +278,17 @@ class Level:
 			mercado.mainloop()
 			return Player.updateMoedasHeroi(moedasAtualiza);	
    
-	def respawnHeroi(health):   
-        vidaAtual = Player.updateVidaHeroi(100)	
-        moedasAtual = Player.updateMoedasHeroi(0)   
-	    velocidadeAtual = Player.updateVelocidadeHeroi(4)	
-   	    forcaAtual = Player.updateForcaHeroi(3)	
-   	    xpAtual = Player.updateXPHeroi(0) 
-        coordenadaXAtual = Player.updateCoordenadaXHeroi(700)
-        coordenadaYAtual = Player.updateCoordenadaYHeroi(500)
-   
-        if health == 0:
-            label1 = Label(mercado, text = "Você norreu!\n")
-			label1.grid(column=2, row=2, padx=10, pady=2)
-       
-        return vidaAtual, moedasAtual, velocidadeAtual, forcaAtual, xpAtual, coordenadaXAtual,coordenadaYAtual;
+	def respawnHeroi():   
+		heroi = tk.Tk()
+		label1 = Label(heroi, text = "Você morreu!\n")
+		label1.grid(column=2, row=2, padx=10, pady=2)
+		heroi.mainloop()
+
+		vidaAtual = Player.updateVidaHeroi(100)	
+		moedasAtual = Player.updateMoedasHeroi(200)   
+		forcaAtual = Player.updateForcaHeroi(3)	
+		coordenadaXYAtual = Player.updateCoordenadaXYHeroi('700','500')
+        # return vidaAtual, moedasAtual, velocidadeAtual, forcaAtual, xpAtual, coordenadaXAtual,coordenadaYAtual;
          
    
 class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
