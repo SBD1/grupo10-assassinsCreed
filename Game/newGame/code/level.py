@@ -99,6 +99,18 @@ class Level:
 				if tecla[97] == 1:
 					self.qtde_moeda = Level.compraArmaArco(self.qtde_moeda) 
 
+		if int(coordenada_x) > 2194 and int(coordenada_x) < 2394:
+			if int(coordenada_y) > 370 and int(coordenada_y) < 570:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					self.qtde_moeda = Level.compraArmaLanca(self.qtde_moeda) 
+
+		if int(coordenada_x) > 1688 and int(coordenada_x) < 1888:
+			if int(coordenada_y) > 2471 and int(coordenada_y) < 2671:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					self.qtde_moeda = Level.compraArmaLaminaAssassino(self.qtde_moeda) 
+
 
 
 		debug(self.player.direction)
@@ -227,6 +239,40 @@ class Level:
 			label1.grid(column=2, row=2, padx=10, pady=2)
 			mercado.mainloop()
 			return Player.updateMoedasHeroi(moedasAtualiza);
+
+	def compraArmaLanca(moedas):
+		valor = Player.valorUtilitarios('arma', 'Lança')
+		moedasAtualiza = int(moedas) - int(valor)
+		
+		if(moedasAtualiza < 0):
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Heroi não possui moedas suficientes\nPara adquirir a Lança")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return moedas
+		else:
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Compra realizada com Sucesso\nVocê possui "+ str(moedasAtualiza) +" moedas")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return Player.updateMoedasHeroi(moedasAtualiza);
+
+	def compraArmaLaminaAssassino(moedas):
+		valor = Player.valorUtilitarios('arma', 'Lamina de assassino')
+		moedasAtualiza = int(moedas) - int(valor)
+		
+		if(moedasAtualiza < 0):
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Heroi não possui moedas suficientes\nPara adquirir a Lamina de Assassino")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return moedas
+		else:
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Compra realizada com Sucesso\nVocê possui "+ str(moedasAtualiza) +" moedas")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return Player.updateMoedasHeroi(moedasAtualiza);	
 
 class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
 	def __init__(self):
