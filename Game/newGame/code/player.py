@@ -91,3 +91,16 @@ class Player(Entidade):
 		x = x[0].replace("[(","")
 		return str(x)
 
+	def valorUtilitarios(tipo, nome):
+		x = str(Conexao.consultar_db("SELECT valor FROM public.tbl_"+ tipo +" WHERE descricao = '"+ nome +"';"))
+		x = x.split(",")
+		x = x[0].replace("[(","")
+		return str(x)
+
+	def updateVidaHeroi(vida):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(vida) +" WHERE id_heroi=1;")
+		return Player.vidaHeroi();
+
+	def updateMoedasHeroi(moedas):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET moedas= "+ str(moedas) +" WHERE id_heroi=1;")
+		return Player.moedasHeroi();

@@ -39,4 +39,4 @@ class UI:
 
 
 	def display(self,player):
-		self.mostrar_barra(player.health,player.stats['vida'],self.health_bar_rect,COR_VIDA)
+		self.mostrar_barra(player.health,100,self.health_bar_rect,COR_VIDA)

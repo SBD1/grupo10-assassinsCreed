@@ -93,9 +93,17 @@ class Level:
 			if int(coordenada_y) > 2585 and int(coordenada_y) < 2640:
 					self.player.health = Level.florDoCampo(self.player.health)
 
+		if int(coordenada_x) > 1444 and int(coordenada_x) < 1644:
+			if int(coordenada_y) > 370 and int(coordenada_y) < 570:
+				tecla = pygame.key.get_pressed()
+				if tecla[97] == 1:
+					self.qtde_moeda = Level.compraArmaArco(self.qtde_moeda) 
+
+
+
 		debug(self.player.direction)
 		self.ui.display(self.player)
-		
+
 		self.ui.mostrar_inventario(self.qtde_moeda) # Mostrar moedas
 
 	def busca_coordenada_x(rect):
@@ -196,13 +204,29 @@ class Level:
 	def ataqueInimigo(health):
 		if health == 0:
 			return health
-		return health - 0.05
+		return Player.updateVidaHeroi(health - 1);
 
 	def florDoCampo(health):
 		if(health == 100):
 			return health
+		return Player.updateVidaHeroi(health + 1);
+
+	def compraArmaArco(moedas):
+		valor = Player.valorUtilitarios('arma', 'Arco')
+		moedasAtualiza = int(moedas) - int(valor)
+		
+		if(moedasAtualiza < 0):
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Heroi não possui moedas suficientes")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return moedas
 		else:
-			return health + 0.05
+			mercado = tk.Tk()
+			label1 = Label(mercado, text = "Compra realizada com Sucesso\nVocê possui "+ str(moedasAtualiza) +" moedas")
+			label1.grid(column=2, row=2, padx=10, pady=2)
+			mercado.mainloop()
+			return Player.updateMoedasHeroi(moedasAtualiza);
 
 class YSortCameraGroup(pygame.sprite.Group): # Movimento da câmera junto com o player
 	def __init__(self):

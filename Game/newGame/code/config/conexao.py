@@ -42,13 +42,10 @@ class Conexao(object):
     def insert_db(sql):
         con = Conexao.conecta_db()
         cur = con.cursor()
-        print(sql)
         response = cur.execute(sql)
         con.commit()
-
         cur.close()
         con.close()
-        print(response)
         return response
 
 
