@@ -24,6 +24,8 @@ class Player(Entidade):
 		self.force = Player.forcaHeroi()
 		self.xp = Player.xpHeroi()
 		self.speed = Player.velocidadeHeroi() # VELOCIDADE PADRÃO
+        self.coordinateX = Player.coordenadaXHeroi()
+        self.coordinateY = Player.coordenadaYHeroi()
 
 		print(self.name)
 
@@ -104,3 +106,25 @@ class Player(Entidade):
 	def updateMoedasHeroi(moedas):
 		Conexao.insert_db("UPDATE public.tbl_heroi SET moedas= "+ str(moedas) +" WHERE id_heroi=1;")
 		return Player.moedasHeroi();
+	
+	def updateVelocidadeHeroi(velocidade):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(velocidade) +" WHERE id_heroi=1;")
+		return Player.velocidadeHeroi();
+	
+	def updateForcaHeroi(forca):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(forca) +" WHERE id_heroi=1;")
+		return Player.forcaHeroi();
+	
+	def updateXPHeroi(xp):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(xp) +" WHERE id_heroi=1;")
+		return Player.xpHeroi();
+	
+	def updateCoordenadaXHeroi(coordenada_x):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(coordenada_x) +" WHERE id_heroi=1;")
+		return Player.coordenadaXHeroi();
+	
+	def updateCoordenadaYHeroi(coordenada_y):
+		Conexao.insert_db("UPDATE public.tbl_heroi SET vida="+ str(coordenada_y) +" WHERE id_heroi=1;")
+		return Player.coordenadaYHeroi();
+	
+	 
