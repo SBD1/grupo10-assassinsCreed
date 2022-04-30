@@ -1,5 +1,5 @@
 INSERT INTO tbl_heroi (id_heroi, nomecompleto, velocidade, vida, forca, xp, moedas, idarmadura, idarma, idinventario, coordenada_x, coordenada_y, area) VALUES
-(1, 'Alexios', 4, 150, 3, 0, 50, 9, 5, 1, 5, 5, 'Vila');
+(1, 'Alexios', 4, 100, 3, 0, 50, 9, 5, 1, 700, 500, 'Vila');
 
 INSERT INTO tbl_civil (id, nomeCompleto, coordenada_x, coordenada_y, area) VALUES
 (2, 'Eduardo Gurgel', 1, 1, 'Vila'),
