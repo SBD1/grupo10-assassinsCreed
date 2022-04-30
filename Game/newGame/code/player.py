@@ -22,7 +22,7 @@ class Player(Entidade):
 		self.coins = Player.moedasHeroi()
 		self.health = Player.vidaHeroi()
 		self.force = Player.forcaHeroi()
-		self.xp = Player.xpHeroi()
+		self.exp = Player.xpHeroi()
 		self.speed = Player.velocidadeHeroi() # VELOCIDADE PADRÃO
 
 		print(self.name)
