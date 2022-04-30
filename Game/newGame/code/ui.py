@@ -36,7 +36,21 @@ class UI:
 
 		# Plotando a barra 2
 		pygame.draw.rect(self.display_surface,color,rect_atual)
+		
+		
+		def mostra_xp(self, exp):
+		text_surf = self.font.render(str(int(exp)), False, COR_TEXTO)
+		x = self.display_surface.get_size()[0] - 45
+		y = self.display_surface.get_size()[1] - 685
+		text_rect = text_surf.get_rect(bottomright=(x, y))
+		self.display_surface.blit(text_surf, text_rect)
+
 
 
 	def display(self,player):
-		self.mostrar_barra(player.health,100,self.health_bar_rect,COR_VIDA)
+		self.mostrar_barra(player.health,player.stats['vida'],self.health_bar_rect,COR_VIDA)
+		self.mostra_xp(player.exp)
+
+
+	
+	
