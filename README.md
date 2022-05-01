@@ -50,3 +50,25 @@ Link da apresentação: https://youtu.be/0mlDCRjdqP4
 </table>
 </div>
 <br/> 
+
+
+## Instalação 
+**Linguagem**: Python<br>
+**Framework**: pygame<br>
+
+* Pré-requisitos:
+  * [Git](https://git-scm.com/)
+  * [Python3](https://www.python.org/)
+  * [pygame](https://www.pygame.org/news)
+
+## Uso 
+
+ * Clonar o repositório
+  ```
+  https://github.com/SBD1/grupo10-assassinsCreed
+  ```
+  
+ * Executar o projeto
+  ```
+  python main.py
+  ```
