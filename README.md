@@ -68,6 +68,12 @@ Link da apresentação: https://youtu.be/0mlDCRjdqP4
   https://github.com/SBD1/grupo10-assassinsCreed
   ```
   
+ * pip install requirements
+  ```
+  grupo10-assassinsCreed/Game/newGame/requirements
+  ```
+  
+  
  * Executar o projeto
   ```
   python main.py
