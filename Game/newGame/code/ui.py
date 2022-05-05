@@ -38,12 +38,12 @@ class UI:
 		pygame.draw.rect(self.display_surface,color,rect_atual)
 		
 		
-		def mostra_xp(self, exp):
-			text_surf = self.font.render(str(int(exp)), False, COR_TEXTO)
-			x = self.display_surface.get_size()[0] - 45
-			y = self.display_surface.get_size()[1] - 685
-			text_rect = text_surf.get_rect(bottomright=(x, y))
-			self.display_surface.blit(text_surf, text_rect)
+	def mostra_xp(self, exp):
+		text_surf = self.font.render(str(int(exp)), False, COR_TEXTO)
+		x = self.display_surface.get_size()[0] - 45
+		y = self.display_surface.get_size()[1] - 685
+		text_rect = text_surf.get_rect(bottomright=(x, y))
+		self.display_surface.blit(text_surf, text_rect)
 
 
 

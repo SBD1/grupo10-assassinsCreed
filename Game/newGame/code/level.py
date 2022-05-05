@@ -29,7 +29,7 @@ class Level:
 		
 		#QTDE moedas
 		self.qtde_moeda = self.player.coins # Número de moedas
-		self.qtde_xp = self.player.xp 
+		self.qtde_xp = self.player.exp
 
 	def cria_mapa(self):
 		layouts = {
