@@ -1,0 +1,694 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+    
+    
+      
+        <title>DDL - Assassins Creed</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7Csans-serif:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"sans-serif"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="#fff" data-md-color-accent="light-blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Assassins Creed" class="md-header__button md-logo" aria-label="Assassins Creed" data-md-component="logo">
+      
+  <img src="../../../logo/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Assassins Creed
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DDL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SBD1/grupo10-assassinsCreed" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    grupo10-assassinsCre
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Assassins Creed" class="md-nav__button md-logo" aria-label="Assassins Creed" data-md-component="logo">
+      
+  <img src="../../../logo/logo.png" alt="logo">
+
+    </a>
+    Assassins Creed
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SBD1/grupo10-assassinsCreed" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    grupo10-assassinsCre
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Início
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MER/MER/" class="md-nav__link">
+        MER
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modelo%20Relacional/Modelo%20Relacional/" class="md-nav__link">
+        Modelo Relacional
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Normaliza%C3%A7%C3%A3o/Normaliza%C3%A7%C3%A3o/" class="md-nav__link">
+        Normalização
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        DDL
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DML/DML/" class="md-nav__link">
+        DML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Game/Game/" class="md-nav__link">
+        Game
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SBD1/grupo10-assassinsCreed/edit/master/docs/SQL/DDL/DDL.md" title="Editar esta página" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>DDL</h1>
+
+<p>CREATE DATABASE assassins_creed;</p>
+<p>CREATE DOMAIN ID AS INT NOT NULL CHECK(VALUE &gt; 0);
+CREATE DOMAIN nome AS VARCHAR(30) NOT NULL;</p>
+<p>CREATE TABLE IF NOT EXISTS tbl_area (
+    nome nome NOT NULL,
+    tamanho_x INTEGER,
+    tamanho_y INTEGER,
+    descricao VARCHAR(50),
+    bioma VARCHAR(10),
+    clima VARCHAR(10),
+    CONSTRAINT nomeArea PRIMARY KEY(nome)
+);</p>
+<p>CREATE TABLE IF NOT EXISTS tbl_quadrado (
+    Quadrado_id INTEGER unique,
+    coordenada_x INTEGER NOT NULL,
+    coordenada_y INTEGER NOT NULL,
+    area VARCHAR(20) NOT NULL,
+    terreno INTEGER,
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    CONSTRAINT coordenadaXY PRIMARY KEY(coordenada_x, coordenada_y)
+);</p>
+<p>CREATE TABLE tbl_civil (
+    id ID NOT NULL,
+    nomeCompleto nome NOT NULL,
+    coordenada_x INTEGER NOT NULL,
+    coordenada_y INTEGER NOT NULL,
+    area VARCHAR(20),
+    CONSTRAINT idDoCivil PRIMARY KEY(id),
+    CONSTRAINT nomeCivil UNIQUE(nomeCompleto),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y)
+);</p>
+<p>CREATE TABLE tbl_inimigo (
+    id ID NOT NULL,
+    nomeCompleto nome NOT NULL,
+    tamanho INTEGER,
+    raca VARCHAR(15),
+    velocidade INTEGER,
+    vida INTEGER,
+    ataque INTEGER,
+    coordenada_x INTEGER,
+    coordenada_y INTEGER,
+    area VARCHAR(20),
+    CONSTRAINT idDoInimigo PRIMARY KEY(id),
+    CONSTRAINT nomeInimigo UNIQUE(nomeCompleto),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y)
+);</p>
+<p>CREATE TABLE tbl_utilitario(
+    idUtilitario ID NOT NULL,
+    descricao VARCHAR(50),
+    valor INTEGER,
+    efeito VARCHAR(20),
+    categoria VARCHAR(20),
+    local CHAR(2),
+    CONSTRAINT chavesPrimariasUtilitario PRIMARY KEY(idUtilitario)
+);</p>
+<p>CREATE TABLE tbl_arma(
+    idArma ID NOT NULL,
+    descricao VARCHAR(50),
+    valor INTEGER,
+    dano VARCHAR(20),
+    categoria VARCHAR(20),
+    local CHAR(2),
+    CONSTRAINT chavesPrimariasArma PRIMARY KEY(idArma)
+);</p>
+<p>CREATE TABLE tbl_armadura(
+    idArmadura ID NOT NULL,
+    descricao VARCHAR(50),
+    valor INTEGER,
+    defesa VARCHAR(20),
+    categoria VARCHAR(20),
+    local CHAR(2),
+    CONSTRAINT chavesPrimariasArmadura PRIMARY KEY(idArmadura)
+);</p>
+<p>CREATE TABLE tbl_vantagens(
+    id_vantagem ID NOT NULL,
+    vantagem VARCHAR(20) NOT NULL,
+    CONSTRAINT idVantagem PRIMARY KEY(id_vantagem),
+    FOREIGN KEY (id_vantagem) REFERENCES tbl_Armadura (idArmadura)
+);</p>
+<p>CREATE TABLE tbl_inventario(
+    idInventario ID NOT NULL,
+    tamanho INTEGER,
+    CONSTRAINT idDoInventario PRIMARY KEY(idInventario)
+);</p>
+<p>CREATE TABLE tbl_tipo_item(
+    id_item ID NOT NULL,
+    tipo_item VARCHAR(15),
+    CONSTRAINT idItem PRIMARY KEY(id_item),
+    FOREIGN KEY (id_item) REFERENCES tbl_Utilitario (idUtilitario),
+    FOREIGN KEY (id_item) REFERENCES tbl_Arma (idArma),
+    FOREIGN KEY (id_item) REFERENCES tbl_Armadura (idArmadura)
+);</p>
+<p>CREATE TABLE tbl_instancia_item(
+    id_instancia_item ID NOT NULL,
+    id_item ID,
+    CONSTRAINT idDaInstanciaItem PRIMARY KEY(id_instancia_item),
+    FOREIGN KEY (id_item) REFERENCES tbl_tipo_item (id_item)
+);</p>
+<p>CREATE TABLE tbl_item_localiza_quadrado(
+    id_instancia ID NOT NULL,
+    coordenada_x INTEGER,
+    coordenada_y INTEGER,
+    area VARCHAR(20),
+    CONSTRAINT idDaInstancia PRIMARY KEY(id_instancia),
+    FOREIGN KEY (id_instancia) REFERENCES tbl_instancia_item (id_instancia_item),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y)
+);</p>
+<p>CREATE TABLE tbl_mercado(
+    id_mercado ID NOT NULL,
+    coordenada_x INTEGER,
+    coordenada_y INTEGER,
+    area VARCHAR(20),
+    CONSTRAINT idDoMercado PRIMARY KEY(id_mercado),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y)
+);</p>
+<p>CREATE TABLE tbl_mercado_possui_item(
+    id_mercado ID NOT NULL,
+    id_instancia ID NOT NULL,
+    CONSTRAINT idDoMercadoPossuiItem PRIMARY KEY(id_mercado, id_instancia),
+    FOREIGN KEY (id_mercado) REFERENCES tbl_mercado (id_mercado),
+    FOREIGN KEY (id_instancia) REFERENCES tbl_instancia_item (id_instancia_item)
+);</p>
+<p>CREATE TABLE tbl_inventario_armazena_item(
+    idInventario ID NOT NULL,
+    idInstancia ID NOT NULL,
+    CONSTRAINT chavesPrimariaInvArmItem PRIMARY KEY(idInventario, idInstancia),
+    FOREIGN KEY (idInstancia) REFERENCES tbl_instancia_item (id_instancia_item)
+);</p>
+<p>CREATE TABLE tbl_heroi (
+    id_heroi ID NOT NULL,
+    nomeCompleto nome NOT NULL,
+    velocidade INTEGER,
+    vida INTEGER,
+    forca INTEGER,
+    XP INTEGER,
+    moedas INTEGER,
+    idArmadura ID,
+    idArma ID,
+    idInventario ID,
+    coordenada_x INTEGER,
+    coordenada_y INTEGER,
+    area VARCHAR(20),
+    CONSTRAINT idDoHeroi PRIMARY KEY(id_heroi),
+    CONSTRAINT nomeHeroi UNIQUE(nomeCompleto),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y),
+    FOREIGN KEY (idArmadura) REFERENCES tbl_Armadura (idArmadura),
+    FOREIGN KEY (idArma) REFERENCES tbl_Arma(idArma),
+    FOREIGN KEY (idInventario) REFERENCES tbl_Inventario(idInventario)
+);</p>
+<p>CREATE TABLE tbl_aliado (
+    id ID NOT NULL,
+    nomeCompleto nome NOT NULL,
+    tamanho INTEGER,
+    velocidade INTEGER,
+    vida INTEGER,
+    ataque INTEGER,
+    coordenada_x INTEGER,
+    coordenada_y INTEGER,
+    area VARCHAR(20),
+    idHeroi ID,
+    CONSTRAINT idDoAliado PRIMARY KEY(id),
+    CONSTRAINT nomeAliado UNIQUE(nomeCompleto),
+    FOREIGN KEY (area) REFERENCES tbl_area (nome),
+    FOREIGN KEY (coordenada_x, coordenada_y) REFERENCES tbl_quadrado (coordenada_x, coordenada_y),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_Heroi (id_heroi)
+);</p>
+<p>CREATE TABLE tbl_tipo_personagem (
+    id_tipo_personagem ID NOT NULL,
+    tipoPersonagem VARCHAR(20),
+    CONSTRAINT idDoPersonagem PRIMARY KEY(id_tipo_personagem),
+    FOREIGN KEY (id_tipo_personagem) REFERENCES tbl_civil (id),
+    FOREIGN KEY (id_tipo_personagem) REFERENCES tbl_inimigo (id),
+    FOREIGN KEY (id_tipo_personagem) REFERENCES tbl_aliado (id),
+    FOREIGN KEY (id_tipo_personagem) REFERENCES tbl_heroi (id_heroi)
+);</p>
+<p>CREATE TABLE tbl_instancia_civil (
+    idInstanciaCivil ID NOT NULL,
+    idCivil ID,
+    CONSTRAINT idDaInstanciaCivil PRIMARY KEY(idInstanciaCivil),
+    FOREIGN KEY (idCivil) REFERENCES tbl_tipo_personagem (id_tipo_personagem)
+);</p>
+<p>CREATE TABLE tbl_instancia_inimigo(
+    idInstanciaInimigo ID NOT NULL,
+    idInimigo ID,
+    CONSTRAINT idDaInstanciaInimigo PRIMARY KEY(idInstanciaInimigo),
+    FOREIGN KEY (idInimigo) REFERENCES tbl_tipo_personagem (id_tipo_personagem)
+);</p>
+<p>CREATE TABLE tbl_instancia_aliado(
+    idInstanciaAliado ID NOT NULL,
+    idAliado ID,
+    CONSTRAINT idDaInstanciaAliado PRIMARY KEY(idInstanciaAliado),
+    FOREIGN KEY (idAliado) REFERENCES tbl_tipo_personagem (id_tipo_personagem)
+);</p>
+<p>CREATE TABLE tbl_heroi_ajuda_aliado(
+    idInstanciaAliado ID NOT NULL,
+    idHeroi ID,
+    CONSTRAINT idDeHeroiAjudaAliado PRIMARY KEY(idInstanciaAliado),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_Heroi (id_heroi)
+);</p>
+<p>CREATE TABLE tbl_evolucao(
+    categoria varchar(15) NOT NULL,
+    idHeroi ID NOT NULL,
+    XPMinimo INTEGER,
+    ganho INTEGER,
+    CONSTRAINT evolucao PRIMARY KEY(categoria, idHeroi),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_heroi (id_heroi)
+);</p>
+<p>CREATE TABLE tbl_kill(
+    idHeroi ID NOT NULL,
+    idInstanciaInimigo ID Not NULL,
+    vencedor nome,
+    CONSTRAINT chavesPrimarias PRIMARY KEY(idHeroi, idInstanciaInimigo),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_heroi (id_heroi),
+    FOREIGN KEY (idInstanciaInimigo) REFERENCES tbl_instancia_inimigo (idInstanciaInimigo)
+);</p>
+<p>CREATE TABLE tbl_missao(
+    nome nome NOT NULL,
+    idHeroi ID NOT NULL,
+    objetivo VARCHAR(200), 
+    dificuldade VARCHAR (10),
+    CONSTRAINT chavesPrimariasMissao PRIMARY KEY(nome, idHeroi),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_Heroi (id_heroi)
+);</p>
+<p>CREATE TABLE tbl_recompensas(
+    missao nome NOT NULL,
+    recompensa VARCHAR(20) NOT NULL, 
+    idHeroi ID NOT NULL,
+    CONSTRAINT chavesPrimariasRecompensas PRIMARY KEY(missao, recompensa),
+    FOREIGN KEY (idHeroi) REFERENCES tbl_Heroi (id_heroi),
+    FOREIGN KEY (missao, idHeroi) REFERENCES tbl_missao (nome, idHeroi)
+);</p>
+<p>CREATE TABLE tbl_inimigo_possui_utilitario(
+    idUtilitario ID NOT NULL,
+    idInstanciaInimigo ID NOT NULL,
+    CONSTRAINT chavesPrimariasInimPossuiUtil PRIMARY KEY(idUtilitario, idInstanciaInimigo),
+    FOREIGN KEY (idUtilitario) REFERENCES tbl_utilitario (idUtilitario),
+    FOREIGN KEY (idInstanciaInimigo) REFERENCES tbl_instancia_inimigo (idInstanciaInimigo)
+);</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../../../Normaliza%C3%A7%C3%A3o/Normaliza%C3%A7%C3%A3o/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Normalização" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Normalização
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../DML/DML/" class="md-footer__link md-footer__link--next" aria-label="Próximo: DML" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              DML
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
+      
+    
+  </body>
+</html>
